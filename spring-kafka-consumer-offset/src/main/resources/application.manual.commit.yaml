@@ -1,27 +1,23 @@
-
-
 logging:
   file: "log/main.log"
   level.org.springframework.kafka.listener: DEBUG
+  level.org.springframework.kafka.listener.adapter: INFO
   level.org.apache.kafka.clients.consumer.internals.ConsumerCoordinator: DEBUG
 
+
+
 spring:
+  profiles.active: consumer
+  #  profiles.active: offset-topic-reader
+
   kafka:
-    bootstrap-servers: "localhost:9092"
+    bootstrap-servers: "some-host:9092"
 
-    #Kafka library configuration
     consumer:
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      key-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
       auto-offset-reset: earliest
-
-      #Auto commit by Kafka library
-      #auto-commit-interval: 300000
-      #enable-auto-commit: true
-
-      #Maual commit by spring-kafka
       enable-auto-commit: false
-
 
     listener:
       #Manual commit (by spring-kafka mechanism) offset every n message or the elapse time pass a threshold

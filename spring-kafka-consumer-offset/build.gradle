@@ -10,8 +10,6 @@ group = 'cc.home'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-def kotlinLogginVersion = '1.5.9'
-
 repositories {
     mavenCentral()
 }
@@ -20,8 +18,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    implementation 'org.springframework.kafka:spring-kafka'
-    implementation("io.github.microutils:kotlin-logging:$kotlinLogginVersion")
+    implementation 'org.springframework.kafka:spring-kafka:2.2.4.RELEASE'
+    implementation 'org.apache.kafka:kafka_2.11:2.1.1'
+    implementation("io.github.microutils:kotlin-logging:1.5.9")
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
 }
